@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+ 
+      
+      <script>window.onerror = function(error, url, line) {
+          parent.postMessage(["console", "❌ -- [ERROR] -- ❌ \nline[" + (line-1) + "]:" + error + "\n-----------------------"], "*")
+        };
+        var cl = console.log;console.log = function () {
+          var msg = [...arguments].join();parent.postMessage(["console", msg], "*");  
+        }  
+        </script><script>window.onerror = function(error, url, line) {
+          parent.postMessage(["console", "❌ -- [ERROR] -- ❌ \nline[" + (line-1) + "]:" + error + "\n-----------------------"], "*")
+        };
+        var cl = console.log;console.log = function () {
+          var msg = [...arguments].join();parent.postMessage(["console", msg], "*");  
+        }  
+       
+</script><script language="javascript" type="text/javascript">
+//A SPACE PARTY: 2023
+//By Dan Hearn
+
+let canvasColor = 0;
+let frameCounter = 0;
+let party = false;
+let oscillator;
+
+  function setup() {
+    createCanvas(windowWidth, windowHeight);
+    
+    oscillator = new p5.Oscillator();
+    oscillator.setType('square');
+    oscillator.freq(440); 
+    oscillator.amp(0.5);
+    console.log("WARNING: FLASHINg IMAGES");
+parent.postMessage(["console",JSON.stringify("WARNING: FLASHINg IMAGES")], "*");
+   }
+
+  function draw() {
+    background(canvasColor)
+    
+    let w = windowWidth / 2;
+    let h = windowHeight / 2;
+    //let eyeFill = fill(255,0,0);
+         
+    fill(50) 
+    strokeWeight(10)
+    stroke(200)
+    rect(w - 200 ,h - 300, 400, 600, 20);
+    
+    fill(200)
+    
+    strokeWeight(10)
+    stroke(200)
+    fill(50)
+    ellipse(w, h, 200, 200)
+    strokeWeight(0)
+    fill(40)
+    ellipse(w, h, 150, 150)
+    fill(145, 1, 1)
+    ellipse(w, h, 100, 100)
+    fill(194, 44, 2)
+    ellipse(w, h, random(75), 75)
+    //eyeFill
+    fill(255,0,0)
+    ellipse(w, h, 50, random(50))
+    fill(75)
+    
+    //speaker mesh bit?
+    let rectX = w - 190;
+    let rectY = h + 150;
+    let rectWidth = 380;
+    let rectHeight= 137.5;
+    
+    let dotSize = 5;
+    let spacing = 10;
+    
+    rect(w - 190 ,h + 150, 380, 137.5, 10); //background
+    
+    //dots
+    for (let y = rectY; y < rectY + rectHeight; y += spacing) {
+      for (let x = rectX; x < rectX + rectWidth; x += spacing) {
+        fill(150); 
+        noStroke();
+        ellipse(x, y, dotSize, dotSize);
+      }
+    }
+    
+    
+    //logo
+    fill(0, 64, 255)
+    strokeWeight(2)
+    stroke(200)
+    rect(w - 100 ,h - 250, 200, 50);
+    strokeWeight(0);
+    fill(0)
+    rect(w - 15 ,h - 250, 115, 50);
+    textSize(40);
+    fill(255);
+    text('HAL 9000', w - 98, h - 212.5);
+    
+    textSize(30);
+    textFont('roboto mono')
+    fill(255);
+    text(`HAL WANTS TO PARTY!`, w / 6, h);
+    textSize(15);
+    text(`Press the spacebar...`, w / 6, h + 40);
+    textSize(15);
+    fill(255,0,0);
+        text(`**WARNING : STROBE**`, w / 6, h + 80);
+    
+ 
+    frameCounter++;
+    if (party == false){
+      canvasColor = 0;
+      oscillator.stop();
+      //eyeFill = fill(255,0,0)
+    } else if (frameCounter % 15 === 0) {
+      canvasColor = color(random(255), random(255), random(255));
+      //eyeFill = fill(random(255),random(255),random(255))
+      oscillator.freq(random(40, 1000));
+      oscillator.amp(0.5);
+      oscillator.start();
+    }
+  }
+
+document.addEventListener('keyup', event => { //spacebar listener
+  if (event.code === 'Space') {
+    party = !party; //to party or not to party?
+  }
+});
+
+function windowResized() { //update canvas
+  resizeCanvas(windowWidth, windowHeight);
+}
+</script>
+ <script crossorigin src = "../libs/p5.min.js">
+</script>
+  <script crossorigin src="../libs/p5.sound.min.js">
+</script>
+</head>
+<body>
+<script language="javascript" type="text/javascript">
+
+</script>
+</body>
+</html>
